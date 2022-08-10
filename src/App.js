@@ -1,9 +1,9 @@
 import React,{Fragment} from 'react';
-
 import Header from './components/Layouts/Header';
 import Meals  from './components/Meals/Meals';
+import Cart from './components/Cart/Cart';
 
-// Let's get Real Here are we 
+ 
 
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
     <Fragment>
       <Header />
       <Meals/>
+      {/* <Cart /> */}
     </Fragment>
   );
 }

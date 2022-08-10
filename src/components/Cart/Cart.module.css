@@ -1,0 +1,50 @@
+.cart {
+  list-style: none;
+  padding: 0 1rem;
+  width: 35rem;
+  height: auto;
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.actions button {
+  font: inherit;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.25rem 2rem;
+  border-radius: 20px;
+  font-weight: bold;
+}
+.actions .order-btn {
+
+  background-color: #8a2b06;
+  border: 1px solid #8a2b06;
+  color: white;
+
+}
+
+.actions .order-btn:hover,
+.actions .order-btn:active {
+  background-color: #641e03;
+  border-color: #641e03;
+}
+
+.actions .cancel-btn {
+  background-color: #fff;
+  border: 1px solid #8a2b06;
+  color: #000;
+  margin-right: 0.5rem;
+}
+
+.actions .cancel-btn:hover,
+.actions .cancel-btn:active {
+  background-color: rgba(211,211,211,0.4);
+  border-color: #641e03;
+}
