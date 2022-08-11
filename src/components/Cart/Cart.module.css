@@ -5,6 +5,26 @@
   height: auto;
 }
 
+
+.total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-top: 1rem;
+}
+
+.total h2{
+    margin: 0;
+    padding: 0;
+}
+
+.total p{
+    margin: 0;
+    padding: 0;
+}
+
 .actions {
   width: 100%;
   display: flex;
@@ -23,11 +43,9 @@
   font-weight: bold;
 }
 .actions .order-btn {
-
   background-color: #8a2b06;
   border: 1px solid #8a2b06;
   color: white;
-
 }
 
 .actions .order-btn:hover,
@@ -39,12 +57,25 @@
 .actions .cancel-btn {
   background-color: #fff;
   border: 1px solid #8a2b06;
-  color: #000;
+  color:  #8a2b06;;
   margin-right: 0.5rem;
 }
 
 .actions .cancel-btn:hover,
 .actions .cancel-btn:active {
-  background-color: rgba(211,211,211,0.4);
+  background-color: rgba(211, 211, 211, 0.4);
   border-color: #641e03;
+}
+
+.price {
+  margin-top: 0.25rem;
+  font-weight: bold;
+  color: #ad5502;
+  font-size: 1.25rem;
+}
+
+@media screen and (max-width: 700px) {
+  .cart {
+    width: 100%;
+  }
 }

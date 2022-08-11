@@ -13,7 +13,7 @@ const Header = (props) => {
       <div className={classes.container}>
         <div className={classes.innerContainer}>
           <h2>ReactMeals</h2>
-          <HeaderCartButton />
+          <HeaderCartButton onClick={props.onShowCart} />
         </div>
       </div>
       <div className={classes["main-image"]}>
