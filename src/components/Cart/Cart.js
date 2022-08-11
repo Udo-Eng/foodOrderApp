@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{useState,useContext} from "react";
+import cartContext from "../../store/cartContext";
 import Modal from '../UI/Modal';
 import classes from './Cart.module.css';
 import CartItem from './CartItem';
@@ -6,28 +7,21 @@ import CartItem from './CartItem';
 
 const Cart = (props) => {
 
-    let SAMPLE_CART_ITEMS = [
-      {
-        id: "m1",
-        name: "Sushi",
-        quantity: 1,
-        price: 22.99,
-      },
-      {
-        id: "m2",
-        name: "Schnitzel",
-        quantity: 2,
-        price: 16.5,
-      },
-      {
-        id: "m3",
-        name: "Barbecue Burger",
-        quantity: 3,
-        price: 12.99,
-      },
-    ];
+  // Acessing the context of the store 
+  const ctx = useContext(cartContext);
 
-    const cartItems = SAMPLE_CART_ITEMS.map((cartItem) => <CartItem cartItem={cartItem} key ={cartItem.id}/>)
+  const [isEmpty,setIsEmpty] = useState(false);
+
+    let CART_ITEMS = ctx.cartItems;
+
+    console.log(CART_ITEMS);
+
+    // if(CART_ITEMS.length !== 0){
+    //       setIsEmpty(true);
+    // }
+
+    const cartItems = isEmpty ? <p> Add items to cart</p> : CART_ITEMS.map((cartItem) => <CartItem cartItem={cartItem} key ={cartItem.id}/>);
+
 
   return (
     <Modal onClick={props.onHideCart}>

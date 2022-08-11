@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import CartContextProvider from './store/cartContext'
+import {CartContextProvider} from './store/cartContext'
 import './index.css';
 import App from './App';
 

@@ -6,6 +6,7 @@ import classes from "./MealItemForm.module.css";
 const MealItemForm = (props) => {
   
   const [quantity ,setQuantity] = useState(1);
+
   const ctx = useContext(cartContext);
 
   const { meal } = props;
@@ -13,6 +14,7 @@ const MealItemForm = (props) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
+
     let cartMeal = {
         id: meal.id,
         name: meal.name,
@@ -20,11 +22,14 @@ const MealItemForm = (props) => {
         price: meal.price,
     }
 
-    ctx.addMealToCartHandler(cartMeal);
+    ctx.onAddCartItem(cartMeal);
 
   };
 
   const onChangeHandler = (e) => {
+
+    console.log('Printing the value of e.target.value');
+    console.log(e.target.value);
       setQuantity(e.target.value);
   }
 
@@ -32,7 +37,6 @@ const MealItemForm = (props) => {
     <form className={classes.form} onSubmit={onSubmitHandler}>
       <Input
         label="Amount"
-        
         input={{
           type: "number",
           step: 1,
