@@ -1,5 +1,5 @@
 import React,{useState,useContext} from "react";
-import cartContext from "../../store/cartContext";
+import CartContext from "../../store/cartContext";
 import Modal from '../UI/Modal';
 import classes from './Cart.module.css';
 import CartItem from './CartItem';
@@ -7,33 +7,59 @@ import CartItem from './CartItem';
 
 const Cart = (props) => {
 
-  // Acessing the context of the store 
-  const ctx = useContext(cartContext);
+  // // Acessing the context of the store 
+  const cartCtx = useContext(CartContext);
 
-  const [isEmpty,setIsEmpty] = useState(false);
+  const [isNotEmpty,setIsNotEmpty] = useState(false);
 
-    let CART_ITEMS = ctx.cartItems;
+  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`
 
-    console.log(CART_ITEMS);
 
-    // if(CART_ITEMS.length !== 0){
-    //       setIsEmpty(true);
-    // }
+    // The  and Operator prevents the value from changing 
+    if (cartCtx.items.length > 0 && !isNotEmpty) {
+      setIsNotEmpty(true);
+    }
 
-    const cartItems = isEmpty ? <p> Add items to cart</p> : CART_ITEMS.map((cartItem) => <CartItem cartItem={cartItem} key ={cartItem.id}/>);
+    const cartRemoveItemHandler = (id) => {
+      cartCtx.removeItem(id);
+    };
+
+    const cartAddItemHandler = (item) => {
+     cartCtx.addItem({...item,amount : 1}); 
+    };
+
+
+    const placeOrder = () =>{
+      console.log('Ordering...')
+    }
+
+    const cartItems = isNotEmpty ? (
+      cartCtx.items.map((cartItem) => (
+        <CartItem
+          cartItem={cartItem}
+          key={cartItem.id}
+          onRemove={cartRemoveItemHandler.bind(null,cartItem.id)}
+          onAdd={cartAddItemHandler.bind(null,cartItem)}
+        />
+      ))
+    ) : (
+      <p className={classes.message}> Add items to cart</p>
+    ); ;
 
 
   return (
     <Modal onClick={props.onHideCart}>
-        <ul className={classes.cart}>{cartItems}</ul>
-        <div className={classes.total}>
-          <h2>Total amount</h2>
-          <p className={classes.price}>$45</p>
-        </div>
-        <div className={classes.actions}>
-          <button  onClick={props.onHideCart} className={classes["cancel-btn"]}>cancel</button>
-          <button className={classes["order-btn"]}>Order</button>
-        </div>
+      <ul className={classes.cart}>{cartItems}</ul>
+      <div className={classes.total}>
+        <h2>Total amount</h2>
+        <p className={classes.price}>{totalAmount}</p>
+      </div>
+      <div className={classes.actions}>
+        <button onClick={props.onHideCart} className={classes["cancel-btn"]}>
+          cancel
+        </button>
+        {isNotEmpty && <button className={classes["order-btn"]} onClick={placeOrder}>Order</button>}
+      </div>
     </Modal>
   );
 }
