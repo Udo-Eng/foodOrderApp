@@ -66,6 +66,10 @@ const cartReducer = (state, action) => {
        };
      }
 
+     if(action.type === 'ORDER'){
+       return defaultCartState;
+     }
+
     return defaultCartState;
 };
 
@@ -80,12 +84,17 @@ const CartProvider = (props) => {
     dispatchCartAction({ type: "REMOVE", id: id });
   };
 
+
+  const placeOrderHandler = () =>{
+    dispatchCartAction({type : "ORDER"});
+  }
   // Add the context concrete Object to be manipulated by state
   const cartContext = {
     items: state.items,
     totalAmount: state.totalAmount,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
+    placeOrder: placeOrderHandler,
   };
 
   return (

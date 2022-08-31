@@ -29,10 +29,6 @@ const Cart = (props) => {
     };
 
 
-    const placeOrder = () =>{
-      console.log('Ordering...')
-    }
-
     const cartItems = isNotEmpty ? (
       cartCtx.items.map((cartItem) => (
         <CartItem
@@ -47,6 +43,11 @@ const Cart = (props) => {
     ); ;
 
 
+    const placeOrderHandler = () =>{
+      props.onHideCart();
+      props.onOrder();
+    }
+
   return (
     <Modal onClick={props.onHideCart}>
       <ul className={classes.cart}>{cartItems}</ul>
@@ -58,7 +59,11 @@ const Cart = (props) => {
         <button onClick={props.onHideCart} className={classes["cancel-btn"]}>
           cancel
         </button>
-        {isNotEmpty && <button className={classes["order-btn"]} onClick={placeOrder}>Order</button>}
+        {isNotEmpty && (
+          <button className={classes["order-btn"]} onClick={placeOrderHandler}>
+            Order
+          </button>
+        )}
       </div>
     </Modal>
   );
