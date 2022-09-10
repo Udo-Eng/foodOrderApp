@@ -4,8 +4,6 @@ import Meals  from './components/Meals/Meals';
 import Cart from './components/Cart/Cart';
 import OrderForm from './components/Order/OrderForm';
 
- 
-
 
 function App() {
 

@@ -1,6 +1,5 @@
 import useInput from "../hooks/use-input";
 import classes from "./orderform.module.css";
-// import SucessResponse from './SucessResponse';
 import Modal from "../UI/Modal";
 import { useContext } from "react";
 import CartContext from "../../store/cartContext";
